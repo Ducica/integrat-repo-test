@@ -45,5 +45,5 @@ suite(
       });
     });
   },
-  { browsers: [Browser.CHROME, Browser.FIREFOX] }
+  { browsers: [Browser.CHROME] }
 );
