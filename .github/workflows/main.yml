@@ -1,0 +1,34 @@
+name: UIintegrationtests
+
+on:
+  workflow_dispatch:
+
+jobs:
+  start_and_test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Set up Node16
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
+
+      - name: Checkout integration-tests-repo
+        uses: actions/checkout@v4
+
+      - name: pring cwd and list all files
+        run: |
+          pwd
+          ls -la
+
+      - name: setup browser
+        uses: browser-actions/setup-chrome@latest
+
+      - name: Install test dependencies
+        run: | 
+          cd integrat-repo-test/selenium-tests 
+          npm ci
+
+      - name: run ui test
+        run: | 
+          cd integrat-repo-test/selenium-tests 
+          npm ci
