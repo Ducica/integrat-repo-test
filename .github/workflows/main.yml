@@ -27,6 +27,7 @@ jobs:
         run: |
           pwd
           cd selenium-tests/ 
+          pwd
           npm ci
 
       - name: run ui test
