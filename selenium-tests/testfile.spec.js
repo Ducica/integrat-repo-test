@@ -2,7 +2,6 @@ const { By, Builder, Browser } = require("selenium-webdriver");
 const { suite } = require("selenium-webdriver/testing");
 const assert = require("assert");
 const Chrome = require("selenium-webdriver/chrome");
-
 const options = new Chrome.Options();
 
 suite(
@@ -11,7 +10,7 @@ suite(
       let driver;
 
       before(async function () {
-        let driver = await new Builder()
+        driver = await new Builder()
           .setChromeOptions(
             options.addArguments([
               "--ignore-ssl-errors=yes",
@@ -21,8 +20,6 @@ suite(
           )
           .forBrowser("chrome")
           .build();
-
-        await driver.manage().setTimeouts({ implicit: 10000 });
       });
 
       after(async () => await driver.quit());
@@ -32,6 +29,8 @@ suite(
 
         let title = await driver.getTitle();
         assert.equal("Web form", title);
+
+        await driver.manage().setTimeouts({ implicit: 500 });
 
         let textBox = await driver.findElement(By.name("my-text"));
         let submitButton = await driver.findElement(By.css("button"));
@@ -45,5 +44,5 @@ suite(
       });
     });
   },
-  { browsers: [Browser.CHROME] }
+  { browsers: [Browser.CHROME, Browser.FIREFOX] }
 );

@@ -29,6 +29,7 @@ jobs:
           cd selenium-tests/ 
           pwd
           npm ci
+          npm install mocha -g
 
       - name: run ui test
         run: |
