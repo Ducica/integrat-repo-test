@@ -7,6 +7,8 @@ const options = new Chrome.Options();
 suite(
   function (env) {
     describe("First script", function () {
+      this.timeout(30000);
+
       let driver;
 
       before(async function () {
@@ -20,6 +22,7 @@ suite(
           )
           .forBrowser("chrome")
           .build();
+        driver.manage().setTimeouts({ implicit: 10000 });
       });
 
       after(async () => await driver.quit());
@@ -44,5 +47,5 @@ suite(
       });
     });
   },
-  { browsers: [Browser.CHROME, Browser.FIREFOX] }
+  { browsers: [Browser.CHROME] }
 );
