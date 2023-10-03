@@ -24,11 +24,12 @@ jobs:
         uses: browser-actions/setup-chrome@latest
 
       - name: Install test dependencies
-        run: | 
-          cd integrat-repo-test/selenium-tests 
+        run: |
+          pwd
+          cd selenium-tests/ 
           npm ci
 
       - name: run ui test
-        run: | 
+        run: |
           cd integrat-repo-test/selenium-tests 
-          npm ci
+          mocha testfile.spec.js
