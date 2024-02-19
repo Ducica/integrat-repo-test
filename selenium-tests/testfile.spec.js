@@ -8,7 +8,7 @@ suite(
   function (env) {
     describe("First script", function () {
       this.timeout(30000);
-
+      console.log("bla bla");
       let driver;
 
       before(async function () {
